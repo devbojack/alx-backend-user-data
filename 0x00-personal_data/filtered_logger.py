@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """
-Regex-ing
 Personal Data
 """
 
@@ -24,18 +23,21 @@ def filter_datum(fields: List[str], redaction: str, message: str,
 
 
 class RedactingFormatter(logging.Formatter):
-    """ Redacting Formatter class
-        """
+    """ RedactingFormatter class. """
 
     REDACTION = "***"
     FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
     SEPARATOR = ";"
 
-    def __init__(self):
+    def __init__(self, fields: List[str]):
+        """ Init """
+        self.fields = fields
         super(RedactingFormatter, self).__init__(self.FORMAT)
 
     def format(self, record: logging.LogRecord) -> str:
-        NotImplementedError
+        """ Format """
+        return filter_datum(self.fields, self.REDACTION,
+                            super().format(record), self.SEPARATOR)
 
 
 def get_logger() -> logging.Logger:
