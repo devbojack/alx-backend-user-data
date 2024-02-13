@@ -98,27 +98,31 @@ bob@dylan:~$
 
 
 ## 1. Error handler: Unauthorized
-What the HTTP status code for a request unauthorized? 401 of course!
+What the HTTP status code for a request unauthorized? `401` of course!
 
-Edit api/v1/app.py:
+Edit `api/v1/app.py:`
+- Add a new error handler for this status code, the response must be:
+    - a JSON: `{"error": "Unauthorized"}`
+    - status code `401`
+    - you must use `jsonify` from Flask
 
-Add a new error handler for this status code, the response must be:
-a JSON: {"error": "Unauthorized"}
-status code 401
-you must use jsonify from Flask
-For testing this new error handler, add a new endpoint in api/v1/views/index.py:
+For testing this new error handler, add a new endpoint in `api/v1/views/index.py:`
+- Route: `GET /api/v1/unauthorized`
+- This endpoint must raise a 401 error by using `abort` - [Custom Error Pages](https://intranet.alxswe.com/rltoken/RH0gY_XQuSB75Q-JbI-fdg)
 
-Route: GET /api/v1/unauthorized
-This endpoint must raise a 401 error by using abort - Custom Error Pages
-By calling abort(401), the error handler for 401 will be executed.
+By calling `abort(401)`, the error handler for 401 will be executed.
 
 In the first terminal:
 
+```
 bob@dylan:~$ API_HOST=0.0.0.0 API_PORT=5000 python3 -m api.v1.app
  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 ....
+```
+
 In a second terminal:
 
+```
 bob@dylan:~$ curl "http://0.0.0.0:5000/api/v1/unauthorized"
 {
   "error": "Unauthorized"
@@ -145,35 +149,45 @@ bob@dylan:~$ curl "http://0.0.0.0:5000/api/v1/unauthorized" -vvv
 }
 * Closing connection 0
 bob@dylan:~$
-Repo:
+```
+<hr>
 
-GitHub repository: alx-backend-user-data
-Directory: 0x01-Basic_authentication
-File: api/v1/app.py, api/v1/views/index.py
-   
-2. Error handler: Forbidden
-mandatory
-What the HTTP status code for a request where the user is authenticate but not allowed to access to a resource? 403 of course!
+**Repo:**
+- GitHub repository: `alx-backend-user-data`
+- Directory: `0x01-Basic_authentication`
+- File: `api/v1/app.py, api/v1/views/index.py`
+<hr>
+<br>
 
-Edit api/v1/app.py:
 
-Add a new error handler for this status code, the response must be:
-a JSON: {"error": "Forbidden"}
-status code 403
-you must use jsonify from Flask
-For testing this new error handler, add a new endpoint in api/v1/views/index.py:
+## 2. Error handler: Forbidden
+What the HTTP status code for a request where the user is authenticate but not allowed to access to a resource? `403` of course!
 
-Route: GET /api/v1/forbidden
-This endpoint must raise a 403 error by using abort - Custom Error Pages
-By calling abort(403), the error handler for 403 will be executed.
+Edit `api/v1/app.py:`
+- Add a new error handler for this status code, the response must be:
+    - a JSON: `{"error": "Forbidden"}`
+    - status code `403`
+    - you must use `jsonify` from Flask
+
+For testing this new error handler, add a new endpoint in `api/v1/views/index.py:`
+
+- Route: `GET /api/v1/forbidden`
+- This endpoint must raise a 403 error by using `abort` - [Custom Error Pages](https://intranet.alxswe.com/rltoken/RH0gY_XQuSB75Q-JbI-fdg)
+
+By calling `abort(403)`, the error handler for 403 will be executed.
 
 In the first terminal:
 
+
+```
 bob@dylan:~$ API_HOST=0.0.0.0 API_PORT=5000 python3 -m api.v1.app
  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 ....
+```
+
 In a second terminal:
 
+```
 bob@dylan:~$ curl "http://0.0.0.0:5000/api/v1/forbidden"
 {
   "error": "Forbidden"
@@ -200,12 +214,16 @@ bob@dylan:~$ curl "http://0.0.0.0:5000/api/v1/forbidden" -vvv
 }
 * Closing connection 0
 bob@dylan:~$
-Repo:
+```
+<hr>
 
-GitHub repository: alx-backend-user-data
-Directory: 0x01-Basic_authentication
-File: api/v1/app.py, api/v1/views/index.py
-   
+**Repo:**
+- GitHub repository: `alx-backend-user-data`
+- Directory: `0x01-Basic_authentication`
+- File: `api/v1/app.py, api/v1/views/index.py`
+<hr>
+<br>
+
 3. Auth class
 mandatory
 Now you will create a class to manage the API authentication.
