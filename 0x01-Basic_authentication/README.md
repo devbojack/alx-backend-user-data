@@ -8,7 +8,7 @@
 ## Background Context
 In this project, you will learn what the authentication process means and implement a **Basic Authentication** on a simple API.
 
-In the industry, you should **not** implement your own Basic authentication system and use a module or framework that doing it for you (like in Python-Flask: `Flask-HTTPAuth`). Here, for the learning purpose, we will walk through each step of this mechanism to understand it by doing.
+In the industry, you should **not** implement your own Basic authentication system and use a module or framework that doing it for you (like in Python-Flask: [Flask-HTTPAuth](https://intranet.alxswe.com/rltoken/rpsPy0M3_FJuCLGNPUbmvg)). Here, for the learning purpose, we will walk through each step of this mechanism to understand it by doing.
 
 ![](/assets/0x01.png)
 
@@ -46,6 +46,9 @@ At the end of this project, you are expected to be able to [explain to anyone](h
 
 
 # Tasks
+
+<details>
+<summary>MANDATORY</summary>
 
 ## 0. Simple-basic-API
 Download and start your project from this [archive.zip](https://intranet.alxswe.com/rltoken/2o4gAozNufil_KjoxKI5bA)
@@ -483,11 +486,12 @@ bob@dylan:~$
 ## 8. Basic - Base64 decode
 Add the method `def decode_base64_authorization_header(self, base64_authorization_header: str) -> str:` in the class `BasicAuth` that returns the decoded value of a Base64 string `base64_authorization_header:`
 
-- Return None if base64_authorization_header is None
-- Return None if base64_authorization_header is not a string
-- Return None if base64_authorization_header is not a valid Base64 - you can use try/except
-- Otherwise, return the decoded value as UTF8 string - you can use decode('utf-8')
-    
+- Return `None` if `base64_authorization_header` is `None`
+- Return `None` if `base64_authorization_header` is not a string
+- Return `None` if `base64_authorization_header` is not a valid Base64 - you can use `try/except`
+- Otherwise, return the decoded value as UTF8 string - you can use `decode('utf-8')`
+
+
 ```
 bob@dylan:~$ cat main_3.py
 #!/usr/bin/env python3
@@ -569,15 +573,16 @@ bob@dylan:~$
 <br>
 
 
-10. Basic - User object
-mandatory
-Add the method def user_object_from_credentials(self, user_email: str, user_pwd: str) -> TypeVar('User'): in the class BasicAuth that returns the User instance based on his email and password.
+## 10. Basic - User object
+Add the method `def user_object_from_credentials(self, user_email: str, user_pwd: str) -> TypeVar('User'):` in the class `BasicAuth` that returns the User instance based on his email and password.
 
-Return None if user_email is None or not a string
-Return None if user_pwd is None or not a string
-Return None if your database (file) doesn’t contain any User instance with email equal to user_email - you should use the class method search of the User to lookup the list of users based on their email. Don’t forget to test all cases: “what if there is no user in DB?”, etc.
-Return None if user_pwd is not the password of the User instance found - you must use the method is_valid_password of User
-Otherwise, return the User instance
+- Return `None` if `user_email` is `None` or not a string
+- Return `None` if `user_pwd` is `None` or not a string
+- Return `None` if your database (file) doesn’t contain any User instance with email equal to `user_email` - you should use the class method `search` of the `User` to lookup the list of users based on their email. Don’t forget to test all cases: “what if there is no user in DB?”, etc.
+- Return `None` if `user_pwd` is not the password of the `User` instance found - you must use the method `is_valid_password` of `User`
+- Otherwise, return the `User` instance
+
+```
 bob@dylan:~$ cat main_5.py
 #!/usr/bin/env python3
 """ Main 5
@@ -625,27 +630,33 @@ None
 None
 Bob Dylan
 bob@dylan:~$
-Repo:
+```
+<hr>
 
-GitHub repository: alx-backend-user-data
-Directory: 0x01-Basic_authentication
-File: api/v1/auth/basic_auth.py
-   
-11. Basic - Overload current_user - and BOOM!
-mandatory
+**Repo:**
+- GitHub repository: `alx-backend-user-data`
+- Directory: `0x01-Basic_authentication`
+- File: `api/v1/auth/basic_auth.py`
+<hr>
+<br>
+
+
+## 11. Basic - Overload current_user - and BOOM!
 Now, you have all pieces for having a complete Basic authentication.
 
-Add the method def current_user(self, request=None) -> TypeVar('User') in the class BasicAuth that overloads Auth and retrieves the User instance for a request:
+Add the method `def current_user(self, request=None) -> TypeVar('User')` in the class `BasicAuth` that overloads `Auth` and retrieves the `User` instance for a request:
 
-You must use authorization_header
-You must use extract_base64_authorization_header
-You must use decode_base64_authorization_header
-You must use extract_user_credentials
-You must use user_object_from_credentials
+- You must use `authorization_header`
+- You must use `extract_base64_authorization_header`
+- You must use `decode_base64_authorization_header`
+- You must use `extract_user_credentials`
+- You must use `user_object_from_credentials`
+
 With this update, now your API is fully protected by a Basic Authentication. Enjoy!
 
 In the first terminal:
 
+```
 bob@dylan:~$ cat main_6.py
 #!/usr/bin/env python3
 """ Main 6
@@ -674,8 +685,11 @@ bob@dylan:~$
 bob@dylan:~$ API_HOST=0.0.0.0 API_PORT=5000 AUTH_TYPE=basic_auth python3 -m api.v1.app
  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 ....
+```
+
 In a second terminal:
 
+```
 bob@dylan:~$ curl "http://0.0.0.0:5000/api/v1/status"
 {
   "status": "OK"
@@ -708,18 +722,27 @@ bob@dylan:~$ curl "http://0.0.0.0:5000/api/v1/users" -H "Authorization: Basic Ym
   }
 ]
 bob@dylan:~$ 
-Repo:
+```
+<hr>
 
-GitHub repository: alx-backend-user-data
-Directory: 0x01-Basic_authentication
-File: api/v1/auth/basic_auth.py
-   
-12. Basic - Allow password with ":"
-#advanced
-Improve the method def extract_user_credentials(self, decoded_base64_authorization_header) to allow password with :.
+**Repo:**
+- GitHub repository: `alx-backend-user-data`
+- Directory: `0x01-Basic_authentication`
+- File: `api/v1/auth/basic_auth.py`
+<hr>
+<br>
+</details>
+
+
+<details>
+<summary>ADVANCED</summary>
+
+## 12. Basic - Allow password with ":"
+Improve the method `def extract_user_credentials(self, decoded_base64_authorization_header)` to allow password with :.
 
 In the first terminal:
 
+```
 bob@dylan:~$ cat main_100.py
 #!/usr/bin/env python3
 """ Main 100
@@ -749,8 +772,11 @@ bob@dylan:~$
 bob@dylan:~$ API_HOST=0.0.0.0 API_PORT=5000 AUTH_TYPE=basic_auth python3 -m api.v1.app
  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 ....
+```
+
 In a second terminal:
 
+```
 bob@dylan:~$ curl "http://0.0.0.0:5000/api/v1/status"
 {
   "status": "OK"
@@ -791,23 +817,30 @@ bob@dylan:~$ curl "http://0.0.0.0:5000/api/v1/users" -H "Authorization: Basic Ym
   }
 ]
 bob@dylan:~$
-Repo:
+```
+<hr>
 
-GitHub repository: alx-backend-user-data
-Directory: 0x01-Basic_authentication
-File: api/v1/auth/basic_auth.py
-   
-13. Require auth with stars
-#advanced
-Improve def require_auth(self, path, excluded_paths) by allowing * at the end of excluded paths.
+**Repo:**
+- GitHub repository: `alx-backend-user-data`
+- Directory: `0x01-Basic_authentication`
+- File: `api/v1/auth/basic_auth.py`
+<hr>
+<br>
 
-Example for excluded_paths = ["/api/v1/stat*"]:
+## 13. Require auth with stars
+Improve `def require_auth(self, path, excluded_paths)` by allowing `*` at the end of excluded paths.
 
-/api/v1/users will return True
-/api/v1/status will return False
-/api/v1/stats will return False
-Repo:
+Example for `excluded_paths = ["/api/v1/stat*"]:`
 
-GitHub repository: alx-backend-user-data
-Directory: 0x01-Basic_authentication
-File: api/v1/auth/auth.py
+- `/api/v1/users` will return `True`
+- `/api/v1/status` will return `False`
+- `/api/v1/stats` will return `False`
+<hr>
+
+**Repo:**
+- GitHub repository: `alx-backend-user-data`
+- Directory: `0x01-Basic_authentication`
+- File: `api/v1/auth/auth.py`
+<hr>
+<br>
+</details>
