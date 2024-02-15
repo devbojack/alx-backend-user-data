@@ -29,6 +29,8 @@ else:
 def before_request_handler():
     """Before request
     """
+    request.current_user = auth.current_user(request)
+
     if auth is None:
         return
 
