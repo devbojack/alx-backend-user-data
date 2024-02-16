@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Session Auth"""
-
+"""
+Session authentication route handlers
+"""
 from api.v1.views import app_views
-from flask import jsonify, request
 from models.user import User
-from api.v1.app import auth
-from os import getenv
+from flask import jsonify, request
+from os import abort, getenv
 
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
@@ -31,9 +31,25 @@ def session_login() -> str:
     if not is_valid_user.is_valid_password(user_password):
         return jsonify({"error": "wrong password"}), 401
 
+    from api.v1.app import auth
     session_id = auth.create_session(is_valid_user.id)
     cookie_response = getenv('SESSION_NAME')
     user_dict = jsonify(is_valid_user.to_json())
 
     user_dict.set_cookie(cookie_response, session_id)
     return user_dict
+
+
+@app_views.route(
+    '/auth_session/logout',
+    methods=['DELETE'],
+    strict_slashes=False)
+def session_logout() -> str:
+    """ DELETE /api/v1/auth/session/logout
+    Returns deleted json (if correctly done)
+    404 if fails
+    """
+    from api.v1.app import auth
+    if auth.destroy_session(request):
+        return jsonify({}), 200
+    abort(404)
