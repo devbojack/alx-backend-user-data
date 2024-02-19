@@ -169,15 +169,16 @@ bob@dylan:~$
 <br>
 
   
-2. Find user
-mandatory
-In this task you will implement the DB.find_user_by method. This method takes in arbitrary keyword arguments and returns the first row found in the users table as filtered by the method’s input arguments. No validation of input arguments required at this point.
+## 2. Find user
+In this task you will implement the `DB.find_user_by` method. This method takes in arbitrary keyword arguments and returns the first row found in the `users` table as filtered by the method’s input arguments. No validation of input arguments required at this point.
 
-Make sure that SQLAlchemy’s NoResultFound and InvalidRequestError are raised when no results are found, or when wrong query arguments are passed, respectively.
+Make sure that SQLAlchemy’s `NoResultFound` and `InvalidRequestError` are raised when no results are found, or when wrong query arguments are passed, respectively.
 
-Warning:
+**Warning:**
 
-NoResultFound has been moved from sqlalchemy.orm.exc to sqlalchemy.exc between the version 1.3.x and 1.4.x of SQLAchemy - please make sure you are importing it from sqlalchemy.orm.exc
+- `NoResultFound` has been moved from `sqlalchemy.orm.exc` to `sqlalchemy.exc` between the version 1.3.x and 1.4.x of SQLAchemy - please make sure you are importing it from `sqlalchemy.orm.exc`
+
+```
 bob@dylan:~$ cat main.py
 #!/usr/bin/env python3
 """
@@ -216,11 +217,16 @@ bob@dylan:~$ python3 main.py
 Not found
 Invalid
 bob@dylan:~$ 
-Repo:
+```
+<hr>
 
-GitHub repository: alx-backend-user-data
-Directory: 0x03-user_authentication_service
-File: db.py
+**Repo:**
+- GitHub repository: `alx-backend-user-data`
+- Directory: `0x03-user_authentication_service`
+- File: `db.py`
+<hr>
+<br>
+
   
 3. update user
 mandatory
