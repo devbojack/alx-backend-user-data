@@ -777,54 +777,53 @@ File: app.py
 <hr>
 <br>
   
-16. Generate reset password token
-mandatory
-In this task, you will implement the Auth.get_reset_password_token method. It take an email string argument and returns a string.
+## 16. Generate reset password token
+In this task, you will implement the `Auth.get_reset_password_token` method. It take an email string argument and returns a string.
 
 Find the user corresponding to the email. If the user does not exist, raise a ValueError exception. If it exists, generate a UUID and update the user’s reset_token database field. Return the token.
+<hr>
 
-Repo:
-
-GitHub repository: alx-backend-user-data
-Directory: 0x03-user_authentication_service
-File: auth.py
+**Repo:**
+- GitHub repository: `alx-backend-user-data`
+- Directory: `0x03-user_authentication_service`
+- File: `auth.py`
 <hr>
 <br>  
 
 
-17. Get reset password token
-mandatory
-In this task, you will implement a get_reset_password_token function to respond to the POST /reset_password route.
+## 17. Get reset password token
+In this task, you will implement a `get_reset_password_token` function to respond to the `POST /reset_password` route.
 
-The request is expected to contain form data with the "email" field.
+The request is expected to contain form data with the `"email"` field.
 
 If the email is not registered, respond with a 403 status code. Otherwise, generate a token and respond with a 200 HTTP status and the following JSON payload:
 
+```
 {"email": "<user email>", "reset_token": "<reset token>"}
-Repo:
+```
+<hr>
 
-GitHub repository: alx-backend-user-data
-Directory: 0x03-user_authentication_service
-File: app.py
+**Repo:**
+- GitHub repository: `alx-backend-user-data`
+- Directory: `0x03-user_authentication_service`
+- File: `app.py`
 <hr>
 <br>
 
 
-18. Update password
-mandatory
-In this task, you will implement the Auth.update_password method. It takes reset_token string argument and a password string argument and returns None.
+## 18. Update password
+In this task, you will implement the `Auth.update_password` method. It takes `reset_token` string argument and a `password` string argument and returns `None`.
 
-Use the reset_token to find the corresponding user. If it does not exist, raise a ValueError exception.
+Use the `reset_token` to find the corresponding user. If it does not exist, raise a ValueError exception.
 
-Otherwise, hash the password and update the user’s hashed_password field with the new hashed password and the reset_token field to None.
+Otherwise, hash the password and update the user’s `hashed_password` field with the new hashed password and the `reset_token` field to `None`.
 
 <hr>
 
 **Repo:**
-
-GitHub repository: alx-backend-user-data
-Directory: 0x03-user_authentication_service
-File: auth.py
+- GitHub repository: `alx-backend-user-data`
+- Directory: `0x03-user_authentication_service`
+- File: `auth.py`
 <hr>
 <br>
 
@@ -844,7 +843,6 @@ If the token is valid, respond with a 200 HTTP code and the following JSON paylo
 <hr>
 
 **Repo:**
-
 - GitHub repository: `alx-backend-user-data`
 - Directory: `0x03-user_authentication_service`
 - File: `app.py`
