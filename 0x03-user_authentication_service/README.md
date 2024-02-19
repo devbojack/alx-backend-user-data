@@ -306,9 +306,9 @@ bob@dylan:~$
 <br>
   
 ## 5. Register user
-mandatory
-In this task, you will implement the Auth.register_user in the Auth class provided below:
+In this task, you will implement the `Auth.register_user` in the `Auth` class provided below:
 
+```
 from db import DB
 
 
@@ -318,14 +318,17 @@ class Auth:
 
     def __init__(self):
         self._db = DB()
-Note that Auth._db is a private property and should NEVER be used from outside the class.
+```
 
-Auth.register_user should take mandatory email and password string arguments and return a User object.
+Note that `Auth._db` is a private property and should NEVER be used from outside the class.
 
-If a user already exist with the passed email, raise a ValueError with the message User <user's email> already exists.
+`Auth.register_user` should take mandatory `email` and `password` string arguments and return a `User` object.
 
-If not, hash the password with _hash_password, save the user to the database using self._db and return the User object.
+If a user already exist with the passed email, raise a `ValueError` with the message `User <user's email> already exists`.
 
+If not, hash the password with `_hash_password`, save the user to the database using `self._db` and return the `User` object.
+
+```
 bob@dylan:~$ cat main.py
 #!/usr/bin/env python3
 """
@@ -354,29 +357,40 @@ bob@dylan:~$ python3 main.py
 successfully created a new user!
 could not create a new user: User me@me.com already exists
 bob@dylan:~$
-Repo:
+```
+<hr>
 
-GitHub repository: alx-backend-user-data
-Directory: 0x03-user_authentication_service
-File: auth.py
+**Repo:**
+- GitHub repository: `alx-backend-user-data`
+- Directory: `0x03-user_authentication_service`
+- File: `auth.py`
+<hr>
+<br>
   
-6. Basic Flask app
-mandatory
+## 6. Basic Flask app
 In this task, you will set up a basic Flask app.
 
-Create a Flask app that has a single GET route ("/") and use flask.jsonify to return a JSON payload of the form:
-
+Create a Flask app that has a single `GET` route (`"/"`) and use `flask.jsonify` to return a JSON payload of the form:
+```
 {"message": "Bienvenue"}
+```
+
 Add the following code at the end of the module:
 
+```
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
-Repo:
+```
+<hr>
 
-GitHub repository: alx-backend-user-data
-Directory: 0x03-user_authentication_service
-File: app.py
-  
+**Repo:**
+- GitHub repository: `alx-backend-user-data`
+- Directory: `0x03-user_authentication_service`
+- File: `app.py`
+<hr>
+<br>
+
+
 7. Register user
 mandatory
 In this task, you will implement the end-point to register a user. Define a users function that implements the POST /users route.
