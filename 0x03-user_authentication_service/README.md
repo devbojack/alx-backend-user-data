@@ -684,6 +684,7 @@ In this task, you will implement Auth.destroy_session. The method takes a single
 The method updates the corresponding user’s session ID to None.
 
 Remember to only use public methods of self._db.
+<hr>
 
 **Repo:**
 - GitHub repository: alx-backend-user-data
@@ -692,16 +693,15 @@ Remember to only use public methods of self._db.
 <hr>
 <br>
   
-14. Log out
-mandatory
-In this task, you will implement a logout function to respond to the DELETE /sessions route.
+## 14. Log out
+In this task, you will implement a `logout` function to respond to the `DELETE /sessions` route.
 
-The request is expected to contain the session ID as a cookie with key "session_id".
+The request is expected to contain the session ID as a cookie with key `"session_id"`.
 
-Find the user with the requested session ID. If the user exists destroy the session and redirect the user to GET /. If the user does not exist, respond with a 403 HTTP status.
+Find the user with the requested session ID. If the user exists destroy the session and redirect the user to `GET /`. If the user does not exist, respond with a 403 HTTP status.
+<hr>
 
 **Repo:**
-
 - GitHub repository: alx-backend-user-data
 - Directory: 0x03-user_authentication_service
 - File: app.py
@@ -710,13 +710,17 @@ Find the user with the requested session ID. If the user exists destroy the sess
 
 
 ## 15. User profile
-In this task, you will implement a profile function to respond to the GET /profile route.
+In this task, you will implement a `profile` function to respond to the `GET /profile` route.
 
-The request is expected to contain a session_id cookie. Use it to find the user. If the user exist, respond with a 200 HTTP status and the following JSON payload:
+The request is expected to contain a `session_id` cookie. Use it to find the user. If the user exist, respond with a 200 HTTP status and the following JSON payload:
 
+```
 {"email": "<user email>"}
+```
+
 If the session ID is invalid or the user does not exist, respond with a 403 HTTP status.
 
+```
 bob@dylan:~$ curl -XPOST localhost:5000/sessions -d 'email=bob@bob.com' -d 'password=mySuperPwd' -v
 Note: Unnecessary use of -X or --request, POST is already inferred.
 *   Trying 127.0.0.1...
@@ -769,8 +773,10 @@ Note: Unnecessary use of -X or --request, GET is already inferred.
 * Closing connection 0
 
 bob@dylan:~$ 
-Repo:
+```
+<hr>
 
+**Repo:**
 GitHub repository: alx-backend-user-data
 Directory: 0x03-user_authentication_service
 File: app.py
@@ -778,9 +784,9 @@ File: app.py
 <br>
   
 ## 16. Generate reset password token
-In this task, you will implement the `Auth.get_reset_password_token` method. It take an email string argument and returns a string.
+In this task, you will implement the `Auth.get_reset_password_token` method. It take an `email` string argument and returns a string.
 
-Find the user corresponding to the email. If the user does not exist, raise a ValueError exception. If it exists, generate a UUID and update the user’s reset_token database field. Return the token.
+Find the user corresponding to the email. If the user does not exist, raise a `ValueError` exception. If it exists, generate a UUID and update the user’s `reset_token` database field. Return the token.
 <hr>
 
 **Repo:**
