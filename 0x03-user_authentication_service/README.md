@@ -490,12 +490,12 @@ bob@dylan:~$
 <br>
 
 
-8. Credentials validation
-mandatory
-In this task, you will implement the Auth.valid_login method. It should expect email and password required arguments and return a boolean.
+## 8. Credentials validation
+In this task, you will implement the `Auth.valid_login method`. It should expect `email` and `password` required arguments and return a boolean.
 
-Try locating the user by email. If it exists, check the password with bcrypt.checkpw. If it matches return True. In any other case, return False.
+Try locating the user by email. If it exists, check the password with `bcrypt.checkpw`. If it matches return T`rue. In any other case, return `False`.
 
+```
 bob@dylan:~$ cat main.py
 #!/usr/bin/env python3
 """
@@ -520,32 +520,39 @@ True
 False
 False
 bob@dylan:~$ 
-Repo:
+```
+<hr>
 
-GitHub repository: alx-backend-user-data
-Directory: 0x03-user_authentication_service
-File: auth.py
+**Repo:**
+- GitHub repository: `alx-backend-user-data`
+- Directory: `0x03-user_authentication_service`
+- File: `auth.py`
+<hr>
+<br>
   
-9. Generate UUIDs
-mandatory
-In this task you will implement a _generate_uuid function in the auth module. The function should return a string representation of a new UUID. Use the uuid module.
 
-Note that the method is private to the auth module and should NOT be used outside of it.
+## 9. Generate UUIDs
+In this task you will implement a `_generate_uuid` function in the `auth` module. The function should return a string representation of a new UUID. Use the uuid module.
 
-Repo:
+Note that the method is private to the `auth` module and should **NOT** be used outside of it.
+<hr>
 
-GitHub repository: alx-backend-user-data
-Directory: 0x03-user_authentication_service
-File: auth.py
-  
-10. Get session ID
-mandatory
-In this task, you will implement the Auth.create_session method. It takes an email string argument and returns the session ID as a string.
+**Repo:**
+- GitHub repository: `alx-backend-user-data`
+- Directory: `0x03-user_authentication_service`
+- File: `auth.py`
+<hr>
+<br>
 
-The method should find the user corresponding to the email, generate a new UUID and store it in the database as the user’s session_id, then return the session ID.
 
-Remember that only public methods of self._db can be used.
+## 10. Get session ID
+In this task, you will implement the `Auth.create_session method`. It takes an `email` string argument and returns the session ID as a string.
 
+The method should find the user corresponding to the email, generate a new UUID and store it in the database as the user’s `session_id`, then return the session ID.
+
+Remember that only public methods of `self._db` can be used.
+
+```
 bob@dylan:~$ cat main.py
 #!/usr/bin/env python3
 """
@@ -565,15 +572,19 @@ print(auth.create_session("unknown@email.com"))
 bob@dylan:~$ python3 main.py
 5a006849-343e-4a48-ba4e-bbd523fcca58
 None
-bob@dylan:~$ 
-Repo:
+bob@dylan:~$
+``` 
+<hr>
 
-GitHub repository: alx-backend-user-data
-Directory: 0x03-user_authentication_service
-File: auth.py
+**Repo:**
+- GitHub repository: `alx-backend-user-data`
+- Directory: `0x03-user_authentication_service`
+- File: `auth.py`
+<hr>
+<br>
   
-11. Log in
-mandatory
+
+## 11. Log in
 In this task, you will implement a login function to respond to the POST /sessions route.
 
 The request is expected to contain form data with "email" and a "password" fields.
