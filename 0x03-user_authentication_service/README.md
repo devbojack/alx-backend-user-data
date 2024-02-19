@@ -857,9 +857,10 @@ If the token is valid, respond with a 200 HTTP code and the following JSON paylo
 
 </details>  
 
-<details>
-<summary>ADVANCED</summaryy>
+<br>
 
+<details>
+<summary>ADVANCED</summary>
 
 ## 20. End-to-end integration test
 Start your app. Open a new terminal window.
@@ -899,7 +900,6 @@ Run `python main.py`. If everything is correct, you should see no output.
 <hr>
 
 **Repo:**
-
 - GitHub repository: `alx-backend-user-data`
 - Directory: `0x03-user_authentication_service`
 - File: `main.py`
