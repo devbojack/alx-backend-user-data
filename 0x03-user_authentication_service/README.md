@@ -662,19 +662,20 @@ bob@dylan:~$
 <hr>
 <br>
   
-12. Find user by session ID
-mandatory
-In this task, you will implement the Auth.get_user_from_session_id method. It takes a single session_id string argument and returns the corresponding User or None.
+## 12. Find user by session ID
+In this task, you will implement the `Auth.get_user_from_session_id` method. It takes a single `session_id` string argument and returns the corresponding `User` or `None`.
 
-If the session ID is None or no user is found, return None. Otherwise return the corresponding user.
+If the session ID is `None` or no user is found, return `None`. Otherwise return the corresponding user.
 
-Remember to only use public methods of self._db.
+Remember to only use public methods of `self._db`.
+<hr>
 
-Repo:
-
-GitHub repository: alx-backend-user-data
-Directory: 0x03-user_authentication_service
-File: auth.py
+**Repo:**
+- GitHub repository: `alx-backend-user-data`
+- Directory: `0x03-user_authentication_service`
+- File: `auth.py`
+<hr>
+<br>
   
 13. Destroy session
 mandatory
