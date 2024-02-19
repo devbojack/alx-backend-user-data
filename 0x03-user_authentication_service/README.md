@@ -391,28 +391,37 @@ if __name__ == "__main__":
 <br>
 
 
-7. Register user
-mandatory
-In this task, you will implement the end-point to register a user. Define a users function that implements the POST /users route.
+## 7. Register user
+In this task, you will implement the end-point to register a user. Define a `users` function that implements the `POST /users` route.
 
-Import the Auth object and instantiate it at the root of the module as such:
+Import the `Auth` object and instantiate it at the root of the module as such:
 
+```
 from auth import Auth
 
 
 AUTH = Auth()
-The end-point should expect two form data fields: "email" and "password". If the user does not exist, the end-point should register it and respond with the following JSON payload:
+```
 
+The end-point should expect two form data fields: `"email"` and `"password"`. If the user does not exist, the end-point should register it and respond with the following JSON payload:
+
+```
 {"email": "<registered email>", "message": "user created"}
+```
+
 If the user is already registered, catch the exception and return a JSON payload of the form
 
+```
 {"message": "email already registered"}
+```
+
 and return a 400 status code
 
-Remember that you should only use AUTH in this app. DB is a lower abstraction that is proxied by Auth.
+Remember that you should only use `AUTH` in this app. `DB` is a lower abstraction that is proxied by `Auth`.
 
-Terminal 1:
+*Terminal 1:*
 
+```
 bob@dylan:~$ python3 app.py 
 * Serving Flask app "app" (lazy loading)
  * Environment: production
@@ -420,9 +429,11 @@ bob@dylan:~$ python3 app.py
    Use a production WSGI server instead.
  * Debug mode: off
  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+```
 
-Terminal 2:
+*Terminal 2:*
 
+```
 bob@dylan:~$ curl -XPOST localhost:5000/users -d 'email=bob@me.com' -d 'password=mySuperPwd' -v
 Note: Unnecessary use of -X or --request, POST is already inferred.
 *   Trying 127.0.0.1...
@@ -468,12 +479,17 @@ Note: Unnecessary use of -X or --request, POST is already inferred.
 < 
 {"message":"email already registered"}
 bob@dylan:~$
-Repo:
+```
+<hr>
 
-GitHub repository: alx-backend-user-data
-Directory: 0x03-user_authentication_service
-File: app.py
-  
+**Repo:**
+- GitHub repository: `alx-backend-user-data`
+- Directory: `0x03-user_authentication_service`
+- File: `app.py`
+<hr>
+<br>
+
+
 8. Credentials validation
 mandatory
 In this task, you will implement the Auth.valid_login method. It should expect email and password required arguments and return a boolean.
