@@ -585,15 +585,20 @@ bob@dylan:~$
   
 
 ## 11. Log in
-In this task, you will implement a login function to respond to the POST /sessions route.
+In this task, you will implement a `login` function to respond to the` POST /sessions` route.
 
-The request is expected to contain form data with "email" and a "password" fields.
+The request is expected to contain form data with `"email"` and a `"password"` fields.
 
-If the login information is incorrect, use flask.abort to respond with a 401 HTTP status.
+If the login information is incorrect, use `flask.abort` to respond with a 401 HTTP status.
 
-Otherwise, create a new session for the user, store it the session ID as a cookie with key "session_id" on the response and return a JSON payload of the form
+Otherwise, create a new session for the user, store it the session ID as a cookie with key `"session_id"` on the response and return a JSON payload of the form
 
+```
 {"email": "<user email>", "message": "logged in"}
+```
+
+
+```
 bob@dylan:~$ curl -XPOST localhost:5000/users -d 'email=bob@bob.com' -d 'password=mySuperPwd'
 {"email":"bob@bob.com","message":"user created"}
 bob@dylan:~$ 
@@ -647,11 +652,15 @@ Note: Unnecessary use of -X or --request, POST is already inferred.
 <p>The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.</p>
 * Closing connection 0
 bob@dylan:~$ 
-Repo:
+```
+<hr>
 
-GitHub repository: alx-backend-user-data
-Directory: 0x03-user_authentication_service
-File: app.py
+**Repo:**
+- GitHub repository: `alx-backend-user-data`
+- Directory: `0x03-user_authentication_service`
+- File: `app.py`
+<hr>
+<br>
   
 12. Find user by session ID
 mandatory
