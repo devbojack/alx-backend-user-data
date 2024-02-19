@@ -97,10 +97,10 @@ bob@dylan:~$
 <hr>
 <br>
   
-1. create user
-mandatory
-In this task, you will complete the DB class provided below to implement the add_user method.
+## 1. create user
+In this task, you will complete the `DB` class provided below to implement the `add_user` method.
 
+```
 """DB module
 """
 from sqlalchemy import create_engine
@@ -131,10 +131,12 @@ class DB:
             DBSession = sessionmaker(bind=self._engine)
             self.__session = DBSession()
         return self.__session
-Note that DB._session is a private property and hence should NEVER be used from outside the DB class.
+```
+Note that `DB._session` is a private property and hence should NEVER be used from outside the `DB` class.
 
-Implement the add_user method, which has two required string arguments: email and hashed_password, and returns a User object. The method should save the user to the database. No validations are required at this stage.
+Implement the `add_user` method, which has two required string arguments: `email` and `hashed_password`, and returns a `User` object. The method should save the user to the database. No validations are required at this stage.
 
+```
 bob@dylan:~$ cat main.py
 #!/usr/bin/env python3
 """
@@ -156,11 +158,16 @@ bob@dylan:~$ python3 main.py
 1
 2
 bob@dylan:~$
-Repo:
+```
+<hr>
 
-GitHub repository: alx-backend-user-data
-Directory: 0x03-user_authentication_service
-File: db.py
+**Repo:**
+- GitHub repository: `alx-backend-user-data`
+- Directory: `0x03-user_authentication_service`
+- File: `db.py`
+<hr>
+<br>
+
   
 2. Find user
 mandatory
