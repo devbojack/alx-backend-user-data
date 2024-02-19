@@ -818,28 +818,87 @@ Use the reset_token to find the corresponding user. If it does not exist, raise 
 
 Otherwise, hash the password and update the user’s hashed_password field with the new hashed password and the reset_token field to None.
 
-Repo:
+<hr>
+
+**Repo:**
 
 GitHub repository: alx-backend-user-data
 Directory: 0x03-user_authentication_service
 File: auth.py
-  
-19. Update password end-point
-mandatory
-In this task you will implement the update_password function in the app module to respond to the PUT /reset_password route.
+<hr>
+<br>
 
-The request is expected to contain form data with fields "email", "reset_token" and "new_password".
+## 19. Update password end-point
+In this task you will implement the `update_password` function in the `app` module to respond to the `PUT /reset_password` route.
+
+The request is expected to contain form data with fields `"email", "reset_token"` and `"new_password"`.
 
 Update the password. If the token is invalid, catch the exception and respond with a 403 HTTP code.
 
 If the token is valid, respond with a 200 HTTP code and the following JSON payload:
 
+```
 {"email": "<user email>", "message": "Password updated"}
-Repo:
-
-GitHub repository: alx-backend-user-data
-Directory: 0x03-user_authentication_service
-File: app.py
+```
 
 <hr>
+
+**Repo:**
+
+- GitHub repository: `alx-backend-user-data`
+- Directory: `0x03-user_authentication_service`
+- File: `app.py`
+<hr>
 <br>
+
+</details>  
+
+<details>
+<summary>ADVANCED</summaryy>
+
+
+## 20. End-to-end integration test
+Start your app. Open a new terminal window.
+
+Create a new module called `main.py`. Create one function for each of the following tasks. Use the `requests` module to query your web server for the corresponding end-point. Use `assert` to validate the response’s expected status code and payload (if any) for each task.
+
+* `register_user(email: str, password: str) -> None`
+* `log_in_wrong_password(email: str, password: str) -> None`
+* `log_in(email: str, password: str) -> str`
+* `profile_unlogged() -> None`
+* `profile_logged(session_id: str) -> None`
+* `log_out(session_id: str) -> None`
+* `reset_password_token(email: str) -> str`
+* `update_password(email: str, reset_token: str, new_password: str) -> None`
+
+Then copy the following code at the end of the main module:
+
+```
+EMAIL = "guillaume@holberton.io"
+PASSWD = "b4l0u"
+NEW_PASSWD = "t4rt1fl3tt3"
+
+
+if __name__ == "__main__":
+
+    register_user(EMAIL, PASSWD)
+    log_in_wrong_password(EMAIL, NEW_PASSWD)
+    profile_unlogged()
+    session_id = log_in(EMAIL, PASSWD)
+    profile_logged(session_id)
+    log_out(session_id)
+    reset_token = reset_password_token(EMAIL)
+    update_password(EMAIL, reset_token, NEW_PASSWD)
+    log_in(EMAIL, NEW_PASSWD)
+```
+Run `python main.py`. If everything is correct, you should see no output.
+<hr>
+
+**Repo:**
+
+- GitHub repository: `alx-backend-user-data`
+- Directory: `0x03-user_authentication_service`
+- File: `main.py`
+<hr>
+<br>
+</details>  
